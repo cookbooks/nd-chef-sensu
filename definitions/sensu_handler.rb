@@ -2,7 +2,7 @@
 
 # sensu_handler "hipchat.sh" do
 #   source "https://raw.github.com/sensu/sensu-community-plugins/master/handlers/notification/hipchat.rb"
-#   config({ "hipchat" => { "apikey" => "1234abcdefg1234abcdefg", "room" => "Ops"})
+#   config({ "hipchat" => { "apikey" => "1234abcdefg1234abcdefg", "room" => "Ops"}})
 # end
 
 # sensu_handler "handler-from-mycookbook.rb" do
@@ -57,7 +57,7 @@ define :sensu_handler, :dir => "/etc/sensu/handlers/", :type => :remote, :source
 
   unless params[:config].empty? or params[:action] == :delete
     json_file ::File.join(params[:dir],::File.basename(params[:name])+".json") do
-      contents params[:config]
+      content params[:config]
       owner params[:owner]
       group params[:group]
       mode "0600" # we don't want to reuse the mode from the handler since it might allow other users to get our lucky charms
