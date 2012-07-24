@@ -2,7 +2,7 @@
 
 # sensu_handler "hipchat.sh" do
 #   source "https://raw.github.com/sensu/sensu-community-plugins/master/handlers/notification/hipchat.rb"
-#   config({ "hipchat" => { "apikey" => "1234abcdefg1234abcdefg", "room" => "Ops"})
+#   config({ "hipchat" => { "apikey" => "1234abcdefg1234abcdefg", "room" => "Ops"}})
 # end
 
 # sensu_handler "handler-from-mycookbook.rb" do
