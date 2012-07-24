@@ -2,7 +2,8 @@
 
 # sensu_handler "hipchat.sh" do
 #   source "https://raw.github.com/sensu/sensu-community-plugins/master/handlers/notification/hipchat.rb"
-#   config({ "hipchat" => { "apikey" => "1234abcdefg1234abcdefg", "room" => "Ops"}})
+#   handler_settings({ "type" => "pipe", "command" => "/etc/sensu/handlers/hipchat.rb" })
+#   handler_config({ "apikey" => "1234abcdefg1234abcdefg", "room" => "Ops" })
 # end
 
 # sensu_handler "handler-from-mycookbook.rb" do
@@ -18,7 +19,7 @@
 #   type :file
 # end
 
-define :sensu_handler, :dir => "/etc/sensu/handlers/", :type => :remote, :source => false, :cookbook => false, :variables => false, :checksum => false, :action => :install, :owner => 'root', :group => 'root', :mode => "0755", :config => {} do
+define :sensu_handler, :dir => "/etc/sensu/handlers/", :type => :remote, :source => false, :cookbook => false, :variables => false, :checksum => false, :action => :install, :owner => 'root', :group => 'root', :mode => "0755", :handler_config => {}, :handler_settings => {} do
   case params[:action]
   when :install
     case params[:type]
@@ -55,12 +56,26 @@ define :sensu_handler, :dir => "/etc/sensu/handlers/", :type => :remote, :source
     end
   end
 
-  unless params[:config].empty? or params[:action] == :delete
-    json_file ::File.join(params[:dir],::File.basename(params[:name],File.extname(params[:name]))+".json") do
-      content params[:config]
+  basename = ::File.basename(params[:name],File.extname(params[:name]))
+  confd_path = ::File.expand_path(::File.join(params[:dir],'../conf.d'))
+  handler_settings = { 'handlers' => { basename => params[:handler_settings] } }
+  handler_config = { basename => params[:handler_config] }
+
+  unless params[:action] == :delete
+    json_file "/etc/sensu/conf.d/handler_#{basename}.json" do
+      content handler_settings
       owner params[:owner]
       group params[:group]
-      mode "0600" # we don't want to reuse the mode from the handler since it might allow other users to get our lucky charms
+      mode "0600"
+    end
+
+    unless params[:handler_config].empty?
+      json_file "/etc/sensu/conf.d/#{basename}.json" do
+        content handler_config
+        owner params[:owner]
+        group params[:group]
+        mode "0600"
+      end
     end
   end
 
