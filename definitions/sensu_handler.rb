@@ -56,7 +56,7 @@ define :sensu_handler, :dir => "/etc/sensu/handlers/", :type => :remote, :source
   end
 
   unless params[:config].empty? or params[:action] == :delete
-    json_file ::File.join(params[:dir],::File.basename(params[:name])+".json") do
+    json_file ::File.join(params[:dir],::File.basename(params[:name],File.extname(params[:name]))+".json") do
       content params[:config]
       owner params[:owner]
       group params[:group]
