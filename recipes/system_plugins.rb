@@ -1,4 +1,4 @@
-plugins {
+plugins = {
 	"check-disk.rb" => "https://raw.github.com/sensu/sensu-community-plugins/master/plugins/system/check-disk.rb",
 	"check-load.rb" => "https://raw.github.com/sensu/sensu-community-plugins/master/plugins/system/check-load.rb",
 	"check-mem.sh" => "https://raw.github.com/sensu/sensu-community-plugins/master/plugins/system/check-mem.sh",
