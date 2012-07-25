@@ -45,7 +45,6 @@ define :sensu_plugin, :dir => "/etc/sensu/plugins/", :type => :remote, :source =
         mode params[:mode]
         source params[:source]
         checksum params[:checksum] if params[:checksum]
-        not_if {::File.exists?(::File.join(params[:dir],params[:name]))} unless params[:checksum]
       end
     end
   when :remove
