@@ -6,8 +6,7 @@ plugins = {
 	"disk-metrics.rb" => "https://raw.github.com/needle-cookbooks/sensu-community-plugins/needle/plugins/system/disk-metrics.rb",
 	"interface-metrics.rb" => "https://raw.github.com/needle-cookbooks/sensu-community-plugins/needle/plugins/system/interface-metrics.rb",
 	"memory-metrics.rb" => "https://raw.github.com/needle-cookbooks/sensu-community-plugins/needle/plugins/system/memory-metrics.rb",
-	"vmstat-metrics.rb" => "https://raw.github.com/needle-cookbooks/sensu-community-plugins/needle/plugins/system/vmstat-metrics.rb",
-	"check_mongodb.py" => "https://raw.github.com/needle-cookbooks/nagios-plugin-mongodb/master/check_mongodb.py"
+	"vmstat-metrics.rb" => "https://raw.github.com/needle-cookbooks/sensu-community-plugins/needle/plugins/system/vmstat-metrics.rb"
 }
 
 plugins.each do |name,src|
