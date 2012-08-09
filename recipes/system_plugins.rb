@@ -7,10 +7,7 @@ plugins = {
 	"interface-metrics.rb" => "https://raw.github.com/needle-cookbooks/sensu-community-plugins/needle/plugins/system/interface-metrics.rb",
 	"memory-metrics.rb" => "https://raw.github.com/needle-cookbooks/sensu-community-plugins/needle/plugins/system/memory-metrics.rb",
 	"vmstat-metrics.rb" => "https://raw.github.com/needle-cookbooks/sensu-community-plugins/needle/plugins/system/vmstat-metrics.rb",
-	"check_mongodb.py" => "https://raw.github.com/needle-cookbooks/nagios-plugin-mongodb/master/check_mongodb.py",
-	"mysql-alive.rb" => "https://raw.github.com/needle-cookbooks/sensu-community-plugins/needle/plugins/mysql/mysql-alive.rb",
-	"mysql-disk.rb" => "https://raw.github.com/needle-cookbooks/sensu-community-plugins/needle/plugins/mysql/mysql-disk.rb",
-	"mysql-graphite.rb" => "https://raw.github.com/needle-cookbooks/sensu-community-plugins/needle/plugins/mysql/mysql-graphite.rb"
+	"check_mongodb.py" => "https://raw.github.com/needle-cookbooks/nagios-plugin-mongodb/master/check_mongodb.py"
 }
 
 plugins.each do |name,src|
