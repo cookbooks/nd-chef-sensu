@@ -1,4 +1,5 @@
 sensu_gem "mysql2"
+gem_package "mysql2"
 
 mysql_plugins = {
     "mysql-alive.rb" => "https://raw.github.com/needle-cookbooks/sensu-community-plugins/needle/plugins/mysql/mysql-alive.rb",
