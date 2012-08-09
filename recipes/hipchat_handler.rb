@@ -10,4 +10,6 @@ sensu_handler "hipchat.rb" do
   source "https://raw.github.com/sensu/sensu-community-plugins/master/handlers/notification/hipchat.rb"
   handler_config({ "apikey" => apikey, "room" => room })
   handler_settings({ "type" => "pipe", "command" => "/etc/sensu/handlers/hipchat.rb" })
+  owner "sensu"
+  group "sensu"
 end
