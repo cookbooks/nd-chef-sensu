@@ -6,7 +6,7 @@ mysql_plugins = {
     "mysql-graphite.rb" => "https://raw.github.com/needle-cookbooks/sensu-community-plugins/needle/plugins/mysql/mysql-graphite.rb"
 }
 
-plugins.each do |name,src|
+mysql_plugins.each do |name,src|
     sensu_plugin name do
         source src
     end
