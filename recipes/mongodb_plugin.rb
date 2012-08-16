@@ -3,7 +3,9 @@ sensu_gem "bson_ext"
 
 include_recipe 'python::default'
 
-python_pip "pymongo"
+python_pip "pymongo" do
+  action :install
+end
 
 sensu_plugin "mongodb-metrics.rb" do
   source "https://raw.github.com/needle-cookbooks/sensu-community-plugins/master/plugins/mongodb/mongodb-metrics.rb"
