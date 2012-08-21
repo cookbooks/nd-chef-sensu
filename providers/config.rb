@@ -9,7 +9,8 @@ action :create do
     :client => {
       :name => @new_resource.name,
       :address => @new_resource.address,
-      :subscriptions => @new_resource.subscriptions.sort
+      :subscriptions => @new_resource.subscriptions.sort,
+      :environment => node.chef_environment
     }
   }
   config = [attributes_config, data_bag_config, client_config].reduce do |a, b|
