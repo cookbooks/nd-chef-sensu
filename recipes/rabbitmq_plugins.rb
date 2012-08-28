@@ -12,6 +12,9 @@ plugins.each do |name,src|
 	end
 end
 
+data_bag_key = Chef::EncryptedDataBagItem.load_secret(node['data_bag_key'])
+secrets = Chef::EncryptedDataBagItem.load("secrets", node.chef_environment, data_bag_key)
+
 node.sensu.client.rabbit_user = secrets['rabbitmq']['haystack']['username']
 node.sensu.client.rabbit_password = secrets['rabbitmq']['haystack']['password']
 
