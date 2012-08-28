@@ -1,4 +1,3 @@
-sensu_gem 'redphone'
 gem_package 'redphone' do
     action :install
 end

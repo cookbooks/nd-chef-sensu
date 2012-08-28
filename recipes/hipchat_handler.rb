@@ -1,4 +1,3 @@
-sensu_gem "hipchat"
 gem_package "hipchat"
 
 data_bag_key = Chef::EncryptedDataBagItem.load_secret(node['data_bag_key'])
