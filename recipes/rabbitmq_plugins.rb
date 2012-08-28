@@ -11,3 +11,7 @@ plugins.each do |name,src|
 		source src
 	end
 end
+
+node.sensu.client.rabbit_user = secrets['rabbitmq']['haystack']['username']
+node.sensu.client.rabbit_password = secrets['rabbitmq']['haystack']['password']
+
