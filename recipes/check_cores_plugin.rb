@@ -8,4 +8,3 @@ plugins.each do |name,src|
     end
 end
 
-node.sensu.partners = node.core.partners
