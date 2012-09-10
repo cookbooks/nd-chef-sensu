@@ -7,3 +7,5 @@ plugins.each do |name,src|
         source src
     end
 end
+
+node.sensu.partners = node.core.partners
