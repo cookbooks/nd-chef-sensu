@@ -31,3 +31,15 @@ if node.sensu.firewall
 
   iptables_rule "port_sensu-api"
 end
+
+plugins = {
+    "check-silenced.rb" => "https://raw.github.com/needle-cookbooks/sensu-community-plugins/needle/plugins/sensu/check-silenced.rb"
+}
+
+plugins.each do |name,src|
+    sensu_plugin name do
+      source src
+      owner "sensu"
+      group "sensu"
+    end
+end
