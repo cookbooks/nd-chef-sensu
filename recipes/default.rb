@@ -74,6 +74,8 @@ include_recipe "sensu::dependencies"
 
 remote_directory File.join(node.sensu.directory, "plugins") do
   files_mode 0755
+  files_backup false
+  purge true
 end
 
 if node.sensu.ssl
@@ -102,7 +104,11 @@ else
 end
 
 sensu_config node.name do
-  address node.has_key?(:cloud) ? node.cloud.public_ipv4 : node.ipaddress
+  if node.has_key?(:cloud)
+    address node.cloud.public_ipv4 || node.ipaddress
+  else
+    address node.ipaddress
+  end
   subscriptions node.roles
   data_bag data_bag_item("sensu", "config")
 end
