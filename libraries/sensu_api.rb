@@ -19,14 +19,14 @@ module Sensu
 
             req.body = payload
 
-            Net::HTTP.start(@server_uri.hostname, @server_uri.port) do |http|
+            Net::HTTP.start(@server_uri.host, @server_uri.port) do |http|
                 http.request(req)
             end
         end
 
         def unsilence_node(node_id)
             req = Net::HTTP::Delete.new("/stash/silence/#{node_id}")
-            Net::HTTP.start(@server_uri.hostname, @server_uri.port) do |http|
+            Net::HTTP.start(@server_uri.host, @server_uri.port) do |http|
                 http.request(req)
             end
         end
