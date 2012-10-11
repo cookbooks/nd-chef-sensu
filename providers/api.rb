@@ -1,4 +1,4 @@
-include Sensu::API
+include Sensu
 
 action :silence do
     Chef::Log.info("Silencing sensu notifications for #{instance_id}")
