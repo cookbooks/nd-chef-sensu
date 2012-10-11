@@ -1,13 +1,13 @@
 include Sensu
 
 action :silence do
-    Chef::Log.info("Silencing sensu notifications for #{node_id}")
+    Chef::Log.info("Silencing sensu notifications for #{new_resource.node_id}")
     api.silence_node(new_resource.node_id)
     new_resource.updated_by_last_action(true)
 end
 
 action :unsilence do
-    Chef::Log.info("Unsilencing sensu notifications for #{node_id}")
+    Chef::Log.info("Unsilencing sensu notifications for #{new_resource.node_id}")
     api.unsilence_node(new_resource.node_id)
     new_resource.updated_by_last_action(true)
 end
