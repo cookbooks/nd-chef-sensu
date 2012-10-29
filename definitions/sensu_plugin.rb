@@ -52,7 +52,7 @@ define :sensu_plugin, :dir => "/etc/sensu/plugins/", :type => :remote, :source =
         url params[:source]
         action :head
         if File.exists?(::File.join(params[:dir],params[:name])
-          headers "If-Modified-Since" => File.mtime(::File.join(params[:dir],params[:name]).httpdate
+          headers "If-Modified-Since" => File.mtime(::File.join(params[:dir],params[:name]).httpdate)
         end
         notifies :create, resources(:remote_file => ::File.join(params[:dir],params[:name]), :immediately
       end
